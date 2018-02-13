@@ -116,7 +116,7 @@ function setTitle(title,mtitle)
     <label for="memobox">メモ</label>
     <input type="checkbox" id="memobox"/>
     <div class="hidden_show">
-      <textarea id="memo" rows="60" cols="80" name="40" style="font-size:40px;"></textarea>
+      <textarea id="memo" rows="55" cols="70" name="40" style="font-size:40px;"></textarea>
     </div>
 </div>
 
@@ -52454,7 +52454,6 @@ iPodから送信
 /*全体　これもメモ機能関連(追加搭載した、開閉ボタンとか。styleのposition-fixedうんぬんも大事。)*/
 .hidden_box {
     padding: 0;
-    margin: 0;
 }
 /*ボタン装飾*/
 .hidden_box label {
@@ -52481,7 +52480,7 @@ iPodから送信
 }
 /*クリックで中身表示*/
 .hidden_box input:checked ~ .hidden_show {
-    padding: 0px 0;
+    padding: -10px 0;
     height: auto;
     opacity: 1;
 }
