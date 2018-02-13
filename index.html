@@ -52378,7 +52378,7 @@ iPodから送信
     <label for="memobox">メモ</label>
     <input type="checkbox" id="memobox" onClick="memobarETCwork(this.checked)" />
     <div class="hidden_show">
-      <textarea id="memo" rows="20" cols="20" name="40"></textarea>
+      <textarea id="memo" rows="20" cols="30" name="40" style="font-size:10px;"></textarea>
     </div>
 </div>
 
@@ -52525,13 +52525,15 @@ input,textarea,select {
 }
 #memobar{
   position: fixed;
-  bottom: 10px;
+  top: 10px;
   left: 10px;
 }
 #memo{
+  /*
   position: fixed;
   top: 10px;
   left: 10px;
+  */
 }
 #menubar {
   position: fixed;
