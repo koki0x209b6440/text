@@ -19,7 +19,7 @@ function setTitle(title,mtitle)
     titlehtmlstr=titlehtmlstr+'<pre>';
     titlehtmlstr=titlehtmlstr+'<h1>'+title+'</h1>';
   document.write(titlehtmlstr+'<br>');
-  document.write('<a href="#" onclick="window.scrollBy(0,screen.height*(200+Math.random()*100));return false;">序盤(？)をスキップ</a><br>');
+  document.write('<a href="#" onclick="window.scrollBy(0,screen.height*(100+Math.random()*100));return false;">序盤(？)をスキップ</a><br>');
   menustr.push(mtitle);
 }
 var readPos=0;
@@ -52376,7 +52376,7 @@ iPodから送信
     <label for="memobox">メモ</label>
     <input type="checkbox" id="memobox" onClick="memobarETCwork(this.checked)" />
     <div class="hidden_show">
-      <textarea id="memo" rows="25" cols="30" name="40" style="font-size:16px;"></textarea>
+      <textarea id="memo" rows="25" cols="30" name="40" style="font-size:14px;"></textarea>
     </div>
 </div>
 
@@ -52515,7 +52515,7 @@ pre{
   font-family: "HuiFont29";
 }
 body {
-  font-size: 16px;/*****************i46px pc15px*//*23px*/
+  font-size: 14px;/*****************i46px pc15px*//*23px*/
   -webkit-text-size-adjust: 100%;
 }
 input,textarea,select {
