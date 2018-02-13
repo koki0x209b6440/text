@@ -22,10 +22,23 @@ function setTitle(title,mtitle)
   document.write('<a href="#" onclick="window.scrollBy(0,screen.height*(200+Math.random()*100));return false;">序盤(？)をスキップ</a><br>');
   menustr.push(mtitle);
 }
+var readPos=0;
+function memobarETCwork( ischecked ) {
+  if( ischecked == true ) {
+      // チェックが入ったら
+      $('#memo').disabled=true;
+      readPos=$(window).scrollTop();
+  }
+  else {
+      // チェックが外れたら
+      $('#memo').disabled=false;
+      if(readPos!=0){ $(window).scrollTop(readPos); }
+  }
+}
 // --></script>
 <head><meta charset="UTF-8"><title>タイトルバー</title>
 <body><div id="menubar"></div><div class="test" id="txt0"><a name="txt0">
-<h1>タイトル</h1>
+<h1>タイトルAAAAAAA</h1>
 
 
 
@@ -52363,9 +52376,9 @@ iPodから送信
 <!--開閉ボタンが追従してくる方の-自動記憶メモ。使わない時はmemobarのstyleのposition-fixedをコメントアウト。競合とかが怖かったら一応ここもコメントアウト-->
 <div class="hidden_box" id="memobar">
     <label for="memobox">メモ</label>
-    <input type="checkbox" id="memobox" onclick="memobarETCwork(this.checked);" />
+    <input type="checkbox" id="memobox" onClick="memobarETCwork(this.checked)" />
     <div class="hidden_show">
-      <textarea id="memo" rows="45" cols="55" name="40" style="font-size:x-large;"></textarea>
+      <textarea id="memo" rows="47" cols="30" name="40" style="font-size:x-large;"></textarea>
     </div>
 </div>
 
@@ -52387,6 +52400,7 @@ iPodから送信
     var scrollFlag=0;
     var p_scrollFlag=-1;
     var htmlstr="<br>";
+
     function getScrollTop(){
       scrollBottom = $(window).scrollTop() + $(window).height()/2;
       for(var i=0; i<menustr.length; i++)
@@ -52409,19 +52423,6 @@ iPodから送信
     }
     $(window).on("load scroll resize", getScrollTop);
 
-      var readPos=0;
-      function memobarETCwork( ischecked ) {
-        if( ischecked == true ) {
-            // チェックが入ったら
-            document.memo.disabled=true;
-            readPos=$(window).scrollTop();
-        }
-        else {
-            // チェックが外れたら
-            document.memo.disabled=false;
-            $(window).scrollTop(readPos);
-        }
-      }
 
         //自動メモ機能(本文のどこかの位置で、memoタグの……入力枠？を設置して、以下が自動発動)
         /*ページを開いたときにローカルストレージの中にでータがあれば読み込む*/
@@ -52470,7 +52471,7 @@ iPodから送信
 }
 /*ボタン装飾*/
 .hidden_box label {
-    padding: 7px;
+    padding: 15px;
     font-weight: bold;
     border: solid 2px black;
     cursor :pointer;
