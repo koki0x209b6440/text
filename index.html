@@ -52365,7 +52365,7 @@ iPodから送信
     <label for="memobox">メモ</label>
     <input type="checkbox" id="memobox" onclick="memobarETCwork(this.checked);" />
     <div class="hidden_show">
-      <textarea id="memo" rows="30" cols="27" name="40" style="font-size:x-large;" disabled></textarea>
+      <textarea id="memo" rows="40" cols="50" name="40" style="font-size:x-large;" disabled></textarea>
     </div>
 </div>
 
@@ -52413,12 +52413,12 @@ iPodから送信
       function memobarETCwork( ischecked ) {
         if( ischecked == true ) {
             // チェックが入ったら
-            document.memo.disabled=false;
+            document.memo.disabled=true;
             readPos=$(window).scrollTop();
         }
         else {
             // チェックが外れたら
-            document.memo.disabled=true;
+            document.memo.disabled=false;
             $(window).scrollTop(readPos);
         }
       }
