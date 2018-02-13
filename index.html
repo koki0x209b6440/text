@@ -26,12 +26,10 @@ var readPos=0;
 function memobarETCwork( ischecked ) {
   if( ischecked == true ) {
       // チェックが入ったら
-      $('#memo').disabled=true;
       readPos=$(window).scrollTop();
   }
   else {
       // チェックが外れたら
-      $('#memo').disabled=false;
       if(readPos!=0){ $(window).scrollTop(readPos); }
   }
 }
@@ -52378,7 +52376,7 @@ iPodから送信
     <label for="memobox">メモ</label>
     <input type="checkbox" id="memobox" onClick="memobarETCwork(this.checked)" />
     <div class="hidden_show">
-      <textarea id="memo" rows="30" cols="40" name="40" style="font-size:16px;"></textarea>
+      <textarea id="memo" rows="20" cols="30" name="40" style="font-size:16px;"></textarea>
     </div>
 </div>
 
@@ -52537,7 +52535,7 @@ input,textarea,select {
 }
 #menubar {
   position: fixed;
-  font-size: 12px;/*****************i40px pc20px*//*10px？*/
+  font-size: 14px;/*****************i40px pc20px*//*10px？*/
   top: 16px;
   right: 10px;
   font-family: "HuiFont29";
