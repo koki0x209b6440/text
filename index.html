@@ -1,11 +1,16 @@
 <!DOCTYPE html>
 <html lang="ja">
-<meta name="viewport" content="initial-scale=1.0"/>
+<!--
+メモ:
+本文開始start
+本文末尾end
+-->
+<meta name="viewport" content="initial-scale=1.0"/><!--開閉メモの挙動関連。特にスマホでの、ズームの動き等に関係-->
 <script type="text/javascript"><!--
-var titleindex=1;
 
-
+//以下は画面右、現在位置がわかる目次の挙動関連。本文中にタイトル(タグ)を打ち込んでいく。
 var menustr=["TOP"];
+var titleindex=1;
 function setTitle(title,mtitle)
 {
   var titlehtmlstr=" ";
@@ -22,8 +27,10 @@ function setTitle(title,mtitle)
   document.write('<a href="#" onclick="window.scrollBy(0,screen.height*(70+Math.random()*100));return false;">序盤(？)をスキップ</a><br>');
   menustr.push(mtitle);
 }
+//以降は開閉メモの機能関連。
 var readPos=0;
 function memobarETCwork( ischecked ) {
+  //開閉メモの挙動に関係。スマホで資料閲覧中にメモを利用したとき、資料のページトップに強制スクロールされてしまう。なので、メモを閉じたとき、直前に見ていた資料の位置へ強制移動する。
   if( ischecked == true ) {
       // チェックが入ったら
       readPos=$(window).scrollTop();
@@ -42,11 +49,7 @@ function memobarETCwork( ischecked ) {
 
 
 
-<!--
-メモ:
-本文開始start
-本文末尾end
--->
+
 </a></div><pre>
   雑記
   オフラインファイル(群)へのリンク等も
@@ -122,15 +125,7 @@ function memobarETCwork( ischecked ) {
 <script type="text/javascript">
   setTitle("t","test");
 </script>
-
-
-
-
-
-
-
-
-<!--直接置く方の自動記憶メモ。使わない時はコメントアウト。-->
+<!--直接置く方の自動記憶メモ。開閉メモの実装前。使わない時はコメントアウト。-->
 <!--
 <script type="text/javascript">
   setTitle("自由メモ帳(自動セーブ)","★メモ");
@@ -52371,7 +52366,8 @@ iPodから送信
 </pre>
 </a></div>
 
-<!--開閉ボタンが追従してくる方の-自動記憶メモ。使わない時はmemobarのstyleのposition-fixedをコメントアウト。競合とかが怖かったら一応ここもコメントアウト-->
+<!--開閉ボタンが追従してくる方の-自動記憶メモ。-->
+<!--本来ならこの位置(本文末尾)に、開閉できるメモが設置されるだけ。それをposition:fixed;でツールバー的な振る舞いにしている。擬似的なため、スマホでの挙動で少し面倒な目にあった。(勝手にページトップに戻るとか、テキストウインドウを拡大してしまうとか、)-->
 <div class="hidden_box" id="memobar">
     <label for="memobox">メモ</label>
     <input type="checkbox" id="memobox" onClick="memobarETCwork(this.checked)" />
@@ -52399,6 +52395,8 @@ iPodから送信
     var p_scrollFlag=-1;
     var htmlstr="<br>";
 
+    //本文中に打ち込んだタイトル(タグ)等を利用して、画面右に動的に目次生成。ツールバー的な挙動は、他の場所でのposition;fixed;このたったひとつの設定が大活躍。
+    //また、現在位置を把握できる機能も目次に搭載。scrollFlagとp_のうんぬん。
     function getScrollTop(){
       scrollBottom = $(window).scrollTop() + $(window).height()/2;
       for(var i=0; i<menustr.length; i++)
@@ -52463,18 +52461,16 @@ iPodから送信
 
 <style type="text/css">
 <!--
-/*全体　これもメモ機能関連(追加搭載した、開閉ボタンとか。styleのposition-fixedうんぬんも大事。)*/
+/*全体　これもメモ機能関連。特に追加搭載した、開閉の機能。*/
 .hidden_box {
     padding: 0;
 }
-/*ボタン装飾*/
 .hidden_box label {
     padding: 15px;
     font-weight: bold;
     border: solid 2px black;
     cursor :pointer;
 }
-/*ボタンホバー時*/
 .hidden_box label:hover {
     background: #efefef;
 }
@@ -52482,7 +52478,7 @@ iPodから送信
 .hidden_box input {
     display: none;
 }
-/*中身を非表示にしておく*/
+/*通常時、中身を非表示にしておく*/
 .hidden_box .hidden_show {
     height: 0;
     padding: 0;
@@ -52499,11 +52495,9 @@ iPodから送信
 -->
 </style>
 
-
-
-
 <style>
 @font-face {
+  /*以下はお遊びで、手書きのような文字を適用するためのもの*/
 	font-family: 'HuiFont29';
 	src:local('MHuiFont29') ,
 	url('HuiFont29.ttfxxxxx');/******url('../../p/_code/HuiFont29XXXXX.ttf');*/
@@ -52520,14 +52514,15 @@ html{
 body {
   font-size: 15px;
   overflow-x: hidden;/*スマホで見た時のみ、画面右側に(本文折り返しの更に右側に)、謎の余白が生まれてしまう。左右スクロール禁止でひとまず応急処置*/
-  -webkit-text-size-adjust: 100%;
+  -webkit-text-size-adjust: 100%;/*これもスマホでの利用時の、見え方に関するもの*/
 }
 input,textarea,select {
-  font-size: 16px;
+  font-size: 16px;/*開閉メモの挙動に関わる(変なズームが起きない)*/
 }
 #memobar{
+  /*目次も開閉メモも、position:fixed;が肝。これによってツールバー的な挙動が簡単にできる。*/
   position: fixed;
-  bottom: 10px;
+  bottom: 10px;/*下側にある開閉メモのボタン。押すと上側にきて、メモが展開。閉じるとまた下側に。の挙動はここのbottomたったひとつのおかげ。(画面内に収まるように…的な内部挙動も関わっているだろう)*/
   left: 10px;
 }
 #menubar {
@@ -52555,9 +52550,16 @@ pre {
 使い方や留意点などメモ
 
 ページ本文では、setTitleだけで、目次リスト生成のマーカー設置
+ツールバー的な挙動
+
+他、内容記憶するメモと、そのツールバー的な挙動。スマホでの見え方に関する調整。
+
+
+
 
 ただし注意点。
-「目次だけスクロール」はできなかった。なので、画面下まで伸びたら後は見えない。(しかも画面サイズ差がある)
+「目次をスクロール」はできなかった。なので、画面下まで伸びたら後は見えない。(しかも表示可能な量は、画面サイズに依存する)
+[アイデア]opacity=1.0を0.4などにすれば、半透明の開閉メモができる。これを利用して、画面いっぱいに埋め込んだ動画を、埋め込み状態のまま動画再生して、その後に半透明メモを重ねる、ってことができるはず(半透明メモを普通に被せるだけだと、動画再生ボタンを押せない。メモをクリックしてしまう。一端閉じる自由度が重要)
 -->
 
 </html>
