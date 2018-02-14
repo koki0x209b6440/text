@@ -52407,7 +52407,7 @@ iPodから送信
       <!--ここからメニュー本文-->
       if(scrollFlag!=p_scrollFlag)
       {
-        htmlstr="<br>|　[menu]<br>";
+        htmlstr="<br>|[menu]<br>";
         for(var i=0; i<menustr.length; i++)
         {
           if(scrollFlag==i)htmlstr=htmlstr+'|<a href="#txt'+i+'"><FONT color="red">'+menustr[i]+'<br></FONT></a>';
@@ -52518,7 +52518,7 @@ body {
 }
 input,textarea,select {
   font-size: 16px;/*開閉メモの挙動に関わる(変なズームが起きない)*/
-  transform: scale(0.8);
+  transform: scale(0.9);
 }
 #memobar{
   /*目次も開閉メモも、position:fixed;が肝。これによってツールバー的な挙動が簡単にできる。*/
