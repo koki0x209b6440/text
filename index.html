@@ -52371,7 +52371,7 @@ iPodから送信
     <label for="memobox">メモ</label>
     <input type="checkbox" id="memobox" onClick="memobarETCwork(this.checked)" />
     <div class="hidden_show">
-      <textarea id="memo" rows="26" cols="34" name="40" style="font-size:16px;"></textarea>
+      <textarea id="memo" rows="26" cols="36" name="40" style="font-size:16px;"></textarea>
     </div>
 </div>
 
@@ -52523,7 +52523,7 @@ input,textarea,select {
   /*目次も開閉メモも、position:fixed;が肝。これによってツールバー的な挙動が簡単にできる。*/
   position: fixed;
   bottom: 10px;/*下側にある開閉メモのボタン。押すと上側にきて、メモが展開。閉じるとまた下側に。の挙動はここのbottomたったひとつのおかげ。(画面内に収まるように…的な内部挙動も関わっているだろう)*/
-  left: -5px;
+  left: -7px;
 }
 #menubar {
   position: fixed;
