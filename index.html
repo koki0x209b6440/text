@@ -52518,6 +52518,7 @@ body {
 }
 input,textarea,select {
   font-size: 16px;/*開閉メモの挙動に関わる(変なズームが起きない)*/
+  transform: scale(0.8);
 }
 #memobar{
   /*目次も開閉メモも、position:fixed;が肝。これによってツールバー的な挙動が簡単にできる。*/
@@ -52529,7 +52530,7 @@ input,textarea,select {
   position: fixed;
   font-size: 13px;
   top: 1px;
-  right: 10px;
+  right: 5px;
   font-family: "HuiFont29";
 }
 pre {
