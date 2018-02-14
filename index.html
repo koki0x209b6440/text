@@ -52514,10 +52514,12 @@ h1 {
 pre{
   font-family: "HuiFont29";
 }
+html{
+  overflow-x: hidden;/*スマホで見た時のみ、画面右側に(本文折り返しの更に右側に)、謎の余白が生まれてしまう。左右スクロール禁止でひとまず応急処置*/
+}
 body {
-  font-size: 15px;/*****************i46px pc15px*//*23px*/
-  box-sizing: border-box;/*ここ二つ。スマホで見た時に画面外右側に謎の余白ができて、ムダに左右スクロールできてしまうので、それへの応急処置*/
-  margin: 0;
+  font-size: 15px;
+  overflow-x: hidden;/*スマホで見た時のみ、画面右側に(本文折り返しの更に右側に)、謎の余白が生まれてしまう。左右スクロール禁止でひとまず応急処置*/
   -webkit-text-size-adjust: 100%;
 }
 input,textarea,select {
@@ -52525,19 +52527,12 @@ input,textarea,select {
 }
 #memobar{
   position: fixed;
-  top: 10px;
+  bottom: 10px;
   left: 10px;
-}
-#memo{
-  /*
-  position: fixed;
-  top: 10px;
-  left: 10px;
-  */
 }
 #menubar {
   position: fixed;
-  font-size: 13px;/*****************i40px pc20px*//*10px？*/
+  font-size: 13px;
   top: 1px;
   right: 10px;
   font-family: "HuiFont29";
