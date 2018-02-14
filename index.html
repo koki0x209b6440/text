@@ -145,7 +145,6 @@ function memobarETCwork( ischecked ) {
 
 
 
-
 <!--本文開始-->
 <script type="text/javascript">
   setTitle(" ","メモ");
@@ -52517,14 +52516,14 @@ body {
   -webkit-text-size-adjust: 100%;/*これもスマホでの利用時の、見え方に関するもの*/
 }
 input,textarea,select {
-  font-size: 16px;/*開閉メモの挙動に関わる(変なズームが起きない)*/
+  font-size: 16px;/*開閉メモの挙動に関わる(変なズームが起きない、その条件を満たしつつ文字サイズを少し小さくする。textareaサイズはやや大きめに)*/
   transform: scale(0.9);
 }
 #memobar{
   /*目次も開閉メモも、position:fixed;が肝。これによってツールバー的な挙動が簡単にできる。*/
   position: fixed;
   bottom: 10px;/*下側にある開閉メモのボタン。押すと上側にきて、メモが展開。閉じるとまた下側に。の挙動はここのbottomたったひとつのおかげ。(画面内に収まるように…的な内部挙動も関わっているだろう)*/
-  left: 10px;
+  left: -5px;
 }
 #menubar {
   position: fixed;
