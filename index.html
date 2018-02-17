@@ -36,12 +36,11 @@ function memobarETCwork( ischecked ) {
       readPos=$(window).scrollTop();
   }
   else {
-      // チェックが外れたら(また、ページトップには本当に戻って欲しく無いのでその保険)
-      if(readPos>100){ $(window).scrollTop(readPos); }
+      $(window).scrollTop(readPos);
   }
 }
 function memobarETCENDwork(){
-  if(readPos>100){ $(window).scrollTop(readPos); }
+  $(window).scrollTop(readPos);
   document.getElementById("memobox").checked = false;
 }
 
@@ -52372,12 +52371,13 @@ iPodから送信
 
 <!--開閉ボタンが追従してくる方の-自動記憶メモ。-->
 <!--本来ならこの位置(本文末尾)に、開閉できるメモが設置されるだけ。それをposition:fixed;でツールバー的な振る舞いにしている。擬似的なため、スマホでの挙動で少し面倒な目にあった。(勝手にページトップに戻るとか、テキストウインドウを拡大してしまうとか、)-->
+
 <div class="hidden_box" id="memobar">
     <label for="memobox">メモ</label>
     <input type="checkbox" id="memobox" onClick="memobarETCwork(this.checked);" />
     <div class="hidden_show">
       <textarea id="memo" rows="26" cols="36" name="40" style="font-size:16px;"></textarea>
-      <br><a href="#" onclick="memobarETCENDwork();">閉じる</a><br>
+      <br>　　<a href="#" onclick="memobarETCENDwork(); return false;">[閉じる]</a><br>
     </div>
 </div>
 
