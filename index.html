@@ -58,6 +58,20 @@ function memobarETCENDworkll(){
   $(window).scrollTop(readPos);
   document.getElementById("memoboxll").checked = false;
 }
+function memobarETCworklll( ischecked ) {
+  //開閉メモの挙動に関係。スマホで資料閲覧中にメモを利用したとき、資料のページトップに強制スクロールされてしまう。なので、メモを閉じたとき、直前に見ていた資料の位置へ強制移動する。
+  if( ischecked == true ) {
+      // チェックが入ったら
+      readPos=$(window).scrollTop();
+  }
+  else {
+      $(window).scrollTop(readPos);
+  }
+}
+function memobarETCENDworklll(){
+  $(window).scrollTop(readPos);
+  document.getElementById("memoboxlll").checked = false;
+}
 // --></script>
 <head><meta charset="UTF-8"><title>タイトルバー</title>
 <body><div id="menubar"></div><div class="test" id="txt0"><a name="txt0">
@@ -52405,6 +52419,15 @@ iPodから送信
     </div>
 </div>
 
+<div class="hidden_box" id="memobarlll">
+    <label for="memoboxlll">他</label>
+    <input type="checkbox" id="memoboxlll" onClick="memobarETCworklll(this.checked);" />
+    <div class="hidden_show">
+      <textarea id="memolll" rows="28" cols="28" name="40" style="font-size:16px;"></textarea>
+      <br><a href="#" onclick="memobarETCENDworklll(); return false;">[閉じる]</a><br>
+    </div>
+</div>
+
 <!--内部機能(スタイル・ページ構成に近い)-->
 <!--スマホ-->
 <script src="jquery-1.11.2.min.js"></script>
@@ -52592,6 +52615,12 @@ input,textarea,select {
   position: fixed;
   bottom: 65px;/*下側にある開閉メモのボタン。押すと上側にきて、メモが展開。閉じるとまた下側に。の挙動はここのbottomたったひとつのおかげ。(画面内に収まるように…的な内部挙動も関わっているだろう)*/
   left: -16px;
+}
+#memobarlll{
+  /*目次も開閉メモも、position:fixed;が肝。これによってツールバー的な挙動が簡単にできる。*/
+  position: fixed;
+  bottom: -5px;/*下側にある開閉メモのボタン。押すと上側にきて、メモが展開。閉じるとまた下側に。の挙動はここのbottomたったひとつのおかげ。(画面内に収まるように…的な内部挙動も関わっているだろう)*/
+  left: 60px;
 }
 #menubar {
   position: fixed;
