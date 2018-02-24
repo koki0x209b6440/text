@@ -52420,11 +52420,11 @@ iPodから送信
 </div>
 
 <div class="hidden_box" id="memobarlll">
-    <label for="memoboxlll">他</label>
+    <label for="memoboxlll">メモ3</label>
     <input type="checkbox" id="memoboxlll" onClick="memobarETCworklll(this.checked);" />
     <div class="hidden_show">
-      <textarea id="memolll" rows="28" cols="28" name="40" style="font-size:16px;"></textarea>
-      <br><a href="#" onclick="memobarETCENDworklll(); return false;">[閉じる]</a><br>
+      <textarea id="memolll" rows="21" cols="36" name="40" style="font-size:16px;"></textarea>
+      <br>　　<a href="#" onclick="memobarETCENDworklll(); return false;">[閉じる]</a><br>
     </div>
 </div>
 
@@ -52619,8 +52619,8 @@ input,textarea,select {
 #memobarlll{
   /*目次も開閉メモも、position:fixed;が肝。これによってツールバー的な挙動が簡単にできる。*/
   position: fixed;
-  bottom: -5px;/*下側にある開閉メモのボタン。押すと上側にきて、メモが展開。閉じるとまた下側に。の挙動はここのbottomたったひとつのおかげ。(画面内に収まるように…的な内部挙動も関わっているだろう)*/
-  left: 60px;
+  bottom: 120px;/*下側にある開閉メモのボタン。押すと上側にきて、メモが展開。閉じるとまた下側に。の挙動はここのbottomたったひとつのおかげ。(画面内に収まるように…的な内部挙動も関わっているだろう)*/
+  left: -16px;
 }
 #menubar {
   position: fixed;
