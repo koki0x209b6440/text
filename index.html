@@ -44,7 +44,20 @@ function memobarETCENDwork(){
   $(window).scrollTop(readPos);
   document.getElementById("memobox").checked = false;
 }
-
+function memobarETCworkll( ischecked ) {
+  //開閉メモの挙動に関係。スマホで資料閲覧中にメモを利用したとき、資料のページトップに強制スクロールされてしまう。なので、メモを閉じたとき、直前に見ていた資料の位置へ強制移動する。
+  if( ischecked == true ) {
+      // チェックが入ったら
+      readPos=$(window).scrollTop();
+  }
+  else {
+      $(window).scrollTop(readPos);
+  }
+}
+function memobarETCENDworkll(){
+  $(window).scrollTop(readPos);
+  document.getElementById("memoboxll").checked = false;
+}
 // --></script>
 <head><meta charset="UTF-8"><title>タイトルバー</title>
 <body><div id="menubar"></div><div class="test" id="txt0"><a name="txt0">
@@ -52383,6 +52396,15 @@ iPodから送信
     </div>
 </div>
 
+<div class="hidden_box" id="memobarll">
+    <label for="memoboxll">メモ</label>
+    <input type="checkbox" id="memoboxll" onClick="memobarETCworkll(this.checked);" />
+    <div class="hidden_show">
+      <textarea id="memoll" rows="26" cols="30" name="40" style="font-size:16px;"></textarea>
+      <br>　　<a href="#" onclick="memobarETCENDworkll(); return false;">[閉じる]</a><br>
+    </div>
+</div>
+
 <!--内部機能(スタイル・ページ構成に近い)-->
 <!--スマホ-->
 <script src="jquery-1.11.2.min.js"></script>
@@ -52459,6 +52481,37 @@ iPodから送信
         $('#memo').bind('keyup',function(){
             localStorage.setItem('memo',$('#memo').val());
         });
+
+        if(localStorage.getItem('memoll')){
+                /*メモの中味を呼び出したものに置き換える*/
+                $('#memoll').val(localStorage.getItem('memoll'));
+        }
+        $('#clear').click(function() {
+                /*メモの中味を消去*/
+                $('#memoll').val('');
+                /*ローカルストレージの中味を削除*/
+                localStrage.removeItem('memoll');
+                //localStrage.clear();
+        });
+        $('#save').click(function() {
+                /*メモの中に記述したものをローカルストレージに書き込み*/
+              localStorage.setItem('memoll',$('#memoll').val());
+                /*ブラウザのコンソールログに読み出しする*/
+              console.log(localStorage.getItem('memoll'));
+        });
+        /*一定時間ごとに自動保存する設定（即時関数:関数名を()で囲み全体を名前として実行）*/
+        (function autoSave() {
+            /*メモの中身を書き込む*/
+            localStorage.setItem('memoll',$('#memoll').val());
+            /*書き込んだときに計2秒メッセージを表示する*/
+            /*$('#message').show(1000).hide(1000);*/
+            /*自分自身を一定の秒数ごとに繰り返し呼び出す*/
+            setTimeout(autoSave, 10000);
+        })();
+        /*キー入力する度に自動保存される設定*/
+        $('#memoll').bind('keyup',function(){
+            localStorage.setItem('memoll',$('#memoll').val());
+        });
   });
 </script>
 </body>
@@ -52533,6 +52586,12 @@ input,textarea,select {
   position: fixed;
   bottom: 10px;/*下側にある開閉メモのボタン。押すと上側にきて、メモが展開。閉じるとまた下側に。の挙動はここのbottomたったひとつのおかげ。(画面内に収まるように…的な内部挙動も関わっているだろう)*/
   left: -7px;
+}
+#memobarll{
+  /*目次も開閉メモも、position:fixed;が肝。これによってツールバー的な挙動が簡単にできる。*/
+  position: fixed;
+  bottom: 10px;/*下側にある開閉メモのボタン。押すと上側にきて、メモが展開。閉じるとまた下側に。の挙動はここのbottomたったひとつのおかげ。(画面内に収まるように…的な内部挙動も関わっているだろう)*/
+  left: 80px;
 }
 #menubar {
   position: fixed;
