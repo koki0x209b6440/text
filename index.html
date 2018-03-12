@@ -1,88 +1,38 @@
 <!DOCTYPE html>
 <html lang="ja">
+<!--スマホ-->
+<script src="jquery-1.11.2.min.js"></script>
+<link rel="stylesheet"  href="jquery.mobile-1.0a4.1.min.css" />
+<script type="text/javascript" src="jquery.mobile-1.0a4.1.min.js"></script>
+<!--PC用(jqueryの位置が違う)-->
+<!--
+<script src="../../p/_code/jquery-1.11.2.min.js"></script>
+<link rel="stylesheet"  href="../../p/_code/jquery.mobile-1.0a4.1.min.css" />
+<script type="text/javascript" src="../../p/_code/jquery.mobile-1.0a4.1.min.js"></script>
+<script>
+-->
+<meta name="viewport" content="initial-scale=1.0"/><!--開閉メモの挙動関連。特にスマホでの、ズームの動き等に関係-->
+<script type="text/javascript" src="memobar.js" charset="shift_jis"></script>
+<link rel="stylesheet"  href="memobar.css" />
+<script type="text/javascript" src="menubar.js" charset="shift_jis"></script>
 <!--
 メモ:
 本文開始start
 本文末尾end
 -->
-<meta name="viewport" content="initial-scale=1.0"/><!--開閉メモの挙動関連。特にスマホでの、ズームの動き等に関係-->
 <script type="text/javascript"><!--
-
 //以下は画面右、現在位置がわかる目次の挙動関連。本文中にタイトル(タグ)を打ち込んでいく。
 var menustr=["TOP"];
-var titleindex=1;
-function setTitle(title,mtitle)
-{
-  var titlehtmlstr=" ";
-    if(titleindex>1)
-    {
-      titlehtmlstr=titlehtmlstr+'</pre>';
-      titlehtmlstr=titlehtmlstr+'</a></div>';
-    }
-    titlehtmlstr=titlehtmlstr+'<div class="test" id="txt'+titleindex+'"><a name="txt'+titleindex+'">';
-    titleindex=titleindex+1;
-    titlehtmlstr=titlehtmlstr+'<pre>';
-    titlehtmlstr=titlehtmlstr+'<h1>'+title+'</h1>';
-  document.write(titlehtmlstr+'<br>');
-  document.write('<a href="#" onclick="window.scrollBy(0,screen.height*(70+Math.random()*100));return false;">序盤(？)をスキップ</a><br>');
-
-  menustr.push(mtitle);
-}
-//以降は開閉メモの機能関連。
-var readPos=0;
-function memobarETCwork( ischecked ) {
-  //開閉メモの挙動に関係。スマホで資料閲覧中にメモを利用したとき、資料のページトップに強制スクロールされてしまう。なので、メモを閉じたとき、直前に見ていた資料の位置へ強制移動する。
-  if( ischecked == true ) {
-      // チェックが入ったら
-      readPos=$(window).scrollTop();
-  }
-  else {
-      $(window).scrollTop(readPos);
-  }
-}
-function memobarETCENDwork(){
-  $(window).scrollTop(readPos);
-  document.getElementById("memobox").checked = false;
-}
-function memobarETCworkll( ischecked ) {
-  //開閉メモの挙動に関係。スマホで資料閲覧中にメモを利用したとき、資料のページトップに強制スクロールされてしまう。なので、メモを閉じたとき、直前に見ていた資料の位置へ強制移動する。
-  if( ischecked == true ) {
-      // チェックが入ったら
-      readPos=$(window).scrollTop();
-  }
-  else {
-      $(window).scrollTop(readPos);
-  }
-}
-function memobarETCENDworkll(){
-  $(window).scrollTop(readPos);
-  document.getElementById("memoboxll").checked = false;
-}
-function memobarETCworklll( ischecked ) {
-  //開閉メモの挙動に関係。スマホで資料閲覧中にメモを利用したとき、資料のページトップに強制スクロールされてしまう。なので、メモを閉じたとき、直前に見ていた資料の位置へ強制移動する。
-  if( ischecked == true ) {
-      // チェックが入ったら
-      readPos=$(window).scrollTop();
-  }
-  else {
-      $(window).scrollTop(readPos);
-  }
-}
-function memobarETCENDworklll(){
-  $(window).scrollTop(readPos);
-  document.getElementById("memoboxlll").checked = false;
-}
 // --></script>
 <head><meta charset="UTF-8"><title>タイトルバー</title>
 <body><div id="menubar"></div><div class="test" id="txt0"><a name="txt0">
 <h1>タイトル</h1>
-
-
-
-
-
-
 </a></div><pre>
+
+
+
+
+
   雑記
   オフラインファイル(群)へのリンク等も
   その他、webのSSの気に入った表現などをメモ(重要度順などの整理はたぶん無し)
@@ -1325,27 +1275,6 @@ function memobarETCENDworklll(){
 
 
 
-
-メモ01
-一話案_始め方は例。メインは主人公情報配置
-
-状況描写も適量。詳test参考に
-奇抜さは別
-地理情報は骸骨騎士の後半(？)
-
-※追加で書くなら「一話案追加_ほにゃらら」で
-
-・主人公の過去なし(経緯はあり)
-<font color="#0000cd">暗黒に目を凝らして見つかるものは
-<font color="#556b2f">裏路地(場所と状況が良い)</font>
-<font color="#0000cd">聖女の召喚儀…それは深夜遅く、仕事から帰宅し、玄関で靴を脱ごうとしたところで起こった…何やら騒がしいが、それを無視して周りを見渡す。</font>
-<font color="#556b2f">目を覚ます…驚いたことに自分は立っていた…辺りを見回しても…</font>
-・主人公の過去あり
-スキル覚醒
-冒険者(魔法使い討伐…俺の名はリーン。旅の冒険者だ…今回のクエストも単独で出かけている。依頼人はイーサの町の領主…)
-<font color="#556b2f">魔物使い(掘り下げは良いが、情報が反復横跳び気味)</font>
-飢え…幼い頃から現在までの冒険者生活を思い出すことができる。
-
 <font color="#0000cd">
 　スプートニクは煉瓦の道に手をついて、立ち上がった。
 　ここはどこだろう。
@@ -1371,16 +1300,16 @@ function memobarETCENDworklll(){
 
 「……っ！」
 
-(ここの繋ぎ微妙？)
-　少女はこちらを見ると右手を光らせた。
+　※ここの繋ぎ微妙？
+　少女はこちらに気づくと右手を光らせた。
 　だが、僕の顔を認識するとすぐに光を収めた。
-
 　敵ではないと思ってくれたようだ。
-　しかし、目を細めてこちらを観察する様子は穏やかなものではない。
 
 「お仲間ですか？」
 
 　少女は硬い声で問うた。
+　目を細めてこちらを観察する様子は穏やかなものではない。
+
 　誰の、とは聞く必要がない。
 　気絶している少年少女達のことだろう。
 　特にやましいことがないので素直に答える。
@@ -1556,12 +1485,6 @@ function memobarETCENDworklll(){
 　ちくしょう。
 
 
-iPodから送信
-
-
-
-
-ipodから送信
 <font color="#0000cd">
 「ば、馬鹿な……っ！？」
 
@@ -1785,6 +1708,7 @@ ipodから送信
 　何をするにせよ、一度、街に戻るべきか。
 　……街に戻るって、この体で？
 　全体像は分からないが？　こんな魔物の体で？
+
 「ゴアー！」
 
 　発声してみる。
@@ -1807,8 +1731,24 @@ ipodから送信
 
 　やれやれ、厄介な事になった……。
 </font>
-</font>
+一話案_始め方は例。メインは主人公情報配置
 
+状況描写も適量。詳test参考に
+奇抜さは別
+地理情報は骸骨騎士の後半(？)
+
+※追加で書くなら「一話案追加_ほにゃらら」で
+
+・主人公の過去なし(経緯はあり)
+<font color="#0000cd">スプトーニク暗黒に目を凝らして見つかるものは</font>
+<font color="#556b2f">魔術塔_裏路地(場所と状況が良い)</font>
+<font color="#0000cd">聖女の召喚儀…それは深夜遅く、仕事から帰宅し、玄関で靴を脱ごうとしたところで起こった…何やら騒がしいが、それを無視して周りを見渡す。</font>
+<font color="#556b2f">妖_目を覚ます…驚いたことに自分は立っていた…辺りを見回しても…</font>
+・主人公の過去あり
+呼吸_スキル覚醒
+冒険者(魔法使い討伐…俺の名はリーン。旅の冒険者だ…今回のクエストも単独で出かけている。依頼人はイーサの町の領主…)
+<font color="#556b2f">魔物使い(掘り下げは良いが、情報が反復横跳び気味)</font>
+飢え…幼い頃から現在までの冒険者生活を思い出すことができる。
 
 　見慣れたアパートの自室に。
 　見慣れない一人の聖女が立っていた。
@@ -54815,7 +54755,7 @@ iPodから送信
 </pre>
 </a></div>
 
-<!--開閉ボタンが追従してくる方の-自動記憶メモ。-->
+<!--開閉ボタンが追従してくる方の-自動記憶メモ。ここは設置。機能はcssとjsとjquery-->
 <!--本来ならこの位置(本文末尾)に、開閉できるメモが設置されるだけ。それをposition:fixed;でツールバー的な振る舞いにしている。擬似的なため、スマホでの挙動で少し面倒な目にあった。(勝手にページトップに戻るとか、テキストウインドウを拡大してしまうとか、)-->
 
 <div class="hidden_box" id="memobar">
@@ -54844,189 +54784,9 @@ iPodから送信
       <br>　　<a href="#" onclick="memobarETCENDworklll(); return false;">[閉じる]</a><br>
     </div>
 </div>
-
-<!--内部機能(スタイル・ページ構成に近い)-->
-<!--スマホ-->
-<script src="jquery-1.11.2.min.js"></script>
-<link rel="stylesheet"  href="jquery.mobile-1.0a4.1.min.css" />
-<script type="text/javascript" src="jquery.mobile-1.0a4.1.min.js"></script>
-<!--PC用-->
-<!--
-<script src="../../p/_code/jquery-1.11.2.min.js"></script>
-<link rel="stylesheet"  href="../../p/_code/jquery.mobile-1.0a4.1.min.css" />
-<script type="text/javascript" src="../../p/_code/jquery.mobile-1.0a4.1.min.js"></script>
-<script>
--->
-<script>
-  $(function(){
-    var scrollBottom;
-    var scrollFlag=0;
-    var p_scrollFlag=-1;
-    var htmlstr="<br>";
-
-    //本文中に打ち込んだタイトル(タグ)等を利用して、画面右に動的に目次生成。ツールバー的な挙動は、他の場所でのposition;fixed;このたったひとつの設定が大活躍。
-    //また、現在位置を把握できる機能も目次に搭載。scrollFlagとp_のうんぬん。
-    function getScrollTop(){
-      scrollBottom = $(window).scrollTop() + $(window).height()/2;
-      for(var i=0; i<menustr.length; i++)
-      {
-        if(scrollBottom >= $("#txt"+i).offset().top)  scrollFlag=i;
-      }
-      if( $(window).scrollTop()< $(window).height()/10){scrollFlag=0; }
-      <!--ここからメニュー本文-->
-      if(scrollFlag!=p_scrollFlag)
-      {
-        htmlstr="<br>|[menu]<br>";
-        for(var i=0; i<menustr.length; i++)
-        {
-          if(scrollFlag==i)htmlstr=htmlstr+'|<a href="#txt'+i+'"><FONT color="red">'+menustr[i]+'<br></FONT></a>';
-          else htmlstr=htmlstr+'|<a href="#txt'+i+'">'+menustr[i]+'<br></a>';
-        }
-        p_scrollFlag=scrollFlag;
-      }
-      $("#menubar").html(htmlstr);
-    }
-    $(window).on("load scroll resize", getScrollTop);
-
-
-        //自動メモ機能(本文のどこかの位置で、memoタグの……入力枠？を設置して、以下が自動発動)
-        /*ページを開いたときにローカルストレージの中にでータがあれば読み込む*/
-        if(localStorage.getItem('memo')){
-                /*メモの中味を呼び出したものに置き換える*/
-                $('#memo').val(localStorage.getItem('memo'));
-        }
-        $('#clear').click(function() {
-                /*メモの中味を消去*/
-                $('#memo').val('');
-                /*ローカルストレージの中味を削除*/
-                localStrage.removeItem('memo');
-                //localStrage.clear();
-        });
-        $('#save').click(function() {
-                /*メモの中に記述したものをローカルストレージに書き込み*/
-              localStorage.setItem('memo',$('#memo').val());
-                /*ブラウザのコンソールログに読み出しする*/
-              console.log(localStorage.getItem('memo'));
-        });
-        /*一定時間ごとに自動保存する設定（即時関数:関数名を()で囲み全体を名前として実行）*/
-        (function autoSave() {
-            /*メモの中身を書き込む*/
-            localStorage.setItem('memo',$('#memo').val());
-            /*書き込んだときに計2秒メッセージを表示する*/
-            /*$('#message').show(1000).hide(1000);*/
-            /*自分自身を一定の秒数ごとに繰り返し呼び出す*/
-            setTimeout(autoSave, 10000);
-        })();
-        /*キー入力する度に自動保存される設定*/
-        $('#memo').bind('keyup',function(){
-            localStorage.setItem('memo',$('#memo').val());
-        });
-
-        if(localStorage.getItem('memoll')){
-                /*メモの中味を呼び出したものに置き換える*/
-                $('#memoll').val(localStorage.getItem('memoll'));
-        }
-        $('#clear').click(function() {
-                /*メモの中味を消去*/
-                $('#memoll').val('');
-                /*ローカルストレージの中味を削除*/
-                localStrage.removeItem('memoll');
-                //localStrage.clear();
-        });
-        $('#save').click(function() {
-                /*メモの中に記述したものをローカルストレージに書き込み*/
-              localStorage.setItem('memoll',$('#memoll').val());
-                /*ブラウザのコンソールログに読み出しする*/
-              console.log(localStorage.getItem('memoll'));
-        });
-        /*一定時間ごとに自動保存する設定（即時関数:関数名を()で囲み全体を名前として実行）*/
-        (function autoSave() {
-            /*メモの中身を書き込む*/
-            localStorage.setItem('memoll',$('#memoll').val());
-            /*書き込んだときに計2秒メッセージを表示する*/
-            /*$('#message').show(1000).hide(1000);*/
-            /*自分自身を一定の秒数ごとに繰り返し呼び出す*/
-            setTimeout(autoSave, 10000);
-        })();
-        /*キー入力する度に自動保存される設定*/
-        $('#memoll').bind('keyup',function(){
-            localStorage.setItem('memoll',$('#memoll').val());
-        });
-
-        if(localStorage.getItem('memolll')){
-                /*メモの中味を呼び出したものに置き換える*/
-                $('#memolll').val(localStorage.getItem('memolll'));
-        }
-        $('#clear').click(function() {
-                /*メモの中味を消去*/
-                $('#memolll').val('');
-                /*ローカルストレージの中味を削除*/
-                localStrage.removeItem('memolll');
-                //localStrage.clear();
-        });
-        $('#save').click(function() {
-                /*メモの中に記述したものをローカルストレージに書き込み*/
-              localStorage.setItem('memolll',$('#memolll').val());
-                /*ブラウザのコンソールログに読み出しする*/
-              console.log(localStorage.getItem('memolll'));
-        });
-        /*一定時間ごとに自動保存する設定（即時関数:関数名を()で囲み全体を名前として実行）*/
-        (function autoSave() {
-            /*メモの中身を書き込む*/
-            localStorage.setItem('memolll',$('#memolll').val());
-            /*書き込んだときに計2秒メッセージを表示する*/
-            /*$('#message').show(1000).hide(1000);*/
-            /*自分自身を一定の秒数ごとに繰り返し呼び出す*/
-            setTimeout(autoSave, 10000);
-        })();
-        /*キー入力する度に自動保存される設定*/
-        $('#memoll').bind('keyup',function(){
-            localStorage.setItem('memolll',$('#memolll').val());
-        });
-  });
-</script>
 </body>
 
-
-
-
-<style type="text/css">
-<!--
-/*全体　これもメモ機能関連。特に追加搭載した、開閉の機能。*/
-.hidden_box {
-    padding: 0;
-}
-.hidden_box label {
-    padding: 15px;
-    font-weight: bold;
-    border: solid 2px black;
-    cursor :pointer;
-}
-.hidden_box label:hover {
-    background: #efefef;
-}
-/*チェックは見えなくする*/
-.hidden_box input {
-    display: none;
-}
-/*通常時、中身を非表示にしておく*/
-.hidden_box .hidden_show {
-    height: 0;
-    padding: 0;
-    overflow: hidden;
-    opacity: 0;
-    transition: 0.8s;
-}
-/*クリックで中身表示*/
-.hidden_box input:checked ~ .hidden_show {
-    padding: 0px 0;
-    height: auto;
-    opacity: 1;
-}
-
--->
-</style>
-
+<!--メニューバー、メモ以外の諸設定(別ファイルに分ける程でもない？試用中？)-->
 <style>
 @font-face {
   /*以下はお遊びで、手書きのような文字を適用するためのもの*/
@@ -55047,35 +54807,6 @@ body {
   font-size: 15px;
   overflow-x: hidden;/*スマホで見た時のみ、画面右側に(本文折り返しの更に右側に)、謎の余白が生まれてしまう。左右スクロール禁止でひとまず応急処置*/
   -webkit-text-size-adjust: 100%;/*これもスマホでの利用時の、見え方に関するもの*/
-}
-input,textarea,select {
-  font-size: 16px;/*開閉メモの挙動に関わる(変なズームが起きない、その条件を満たしつつ文字サイズを少し小さくする。textareaサイズはやや大きめに)*/
-  transform: scale(0.9);
-}
-#memobar{
-  /*目次も開閉メモも、position:fixed;が肝。これによってツールバー的な挙動が簡単にできる。*/
-  position: fixed;
-  bottom: 10px;/*下側にある開閉メモのボタン。押すと上側にきて、メモが展開。閉じるとまた下側に。の挙動はここのbottomたったひとつのおかげ。(画面内に収まるように…的な内部挙動も関わっているだろう)*/
-  left: -7px;
-}
-#memobarll{
-  /*目次も開閉メモも、position:fixed;が肝。これによってツールバー的な挙動が簡単にできる。*/
-  position: fixed;
-  bottom: 65px;/*下側にある開閉メモのボタン。押すと上側にきて、メモが展開。閉じるとまた下側に。の挙動はここのbottomたったひとつのおかげ。(画面内に収まるように…的な内部挙動も関わっているだろう)*/
-  left: -16px;
-}
-#memobarlll{
-  /*目次も開閉メモも、position:fixed;が肝。これによってツールバー的な挙動が簡単にできる。*/
-  position: fixed;
-  bottom: 120px;/*下側にある開閉メモのボタン。押すと上側にきて、メモが展開。閉じるとまた下側に。の挙動はここのbottomたったひとつのおかげ。(画面内に収まるように…的な内部挙動も関わっているだろう)*/
-  left: -16px;
-}
-#menubar {
-  position: fixed;
-  font-size: 13px;
-  top: 1px;
-  right: 0px;
-  font-family: "HuiFont29";
 }
 pre {
     /* Mozilla preタグの＜br＞要らずの本文書きを、右端で折り返すように設定*/

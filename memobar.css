@@ -1,0 +1,82 @@
+@charset “UTF-8”;
+
+#memobar{
+  /*開閉メモの位置。*/
+  /*(メモを増やす場合、こことjsと本文中メモ設置文の「ll」を増やしてコピペするしかない。関数は汎用化できると思うが、cssは…htmlタグのid部分は…)あと開閉機能の部分ちょっと。また、右側メニューの位置も末尾で設定(特に変える事ないだろうから別ファイルにはしない)*/
+
+  /*目次も開閉メモも、position:fixed;が肝。これによってツールバー的な挙動が簡単にできる。*/
+  position: fixed;
+  bottom: 10px;/*下側にある開閉メモのボタン。押すと上側にきて、メモが展開。閉じるとまた下側に。の挙動はここのbottomたったひとつのおかげ。(画面内に収まるように…的な内部挙動も関わっているだろう)*/
+  left: -7px;
+}
+
+
+
+
+
+#memobarll{
+  /*目次も開閉メモも、position:fixed;が肝。これによってツールバー的な挙動が簡単にできる。*/
+  position: fixed;
+  bottom: 65px;/*下側にある開閉メモのボタン。押すと上側にきて、メモが展開。閉じるとまた下側に。の挙動はここのbottomたったひとつのおかげ。(画面内に収まるように…的な内部挙動も関わっているだろう)*/
+  left: -16px;
+}
+
+
+
+
+
+#memobarlll{
+  /*目次も開閉メモも、position:fixed;が肝。これによってツールバー的な挙動が簡単にできる。*/
+  position: fixed;
+  bottom: 120px;/*下側にある開閉メモのボタン。押すと上側にきて、メモが展開。閉じるとまた下側に。の挙動はここのbottomたったひとつのおかげ。(画面内に収まるように…的な内部挙動も関わっているだろう)*/
+  left: -16px;
+}
+
+
+
+
+
+
+
+/*全体　これもメモ機能関連。特に追加搭載した、開閉の機能。*/
+.hidden_box {
+    padding: 0;
+}
+.hidden_box label {
+    padding: 15px;
+    font-weight: bold;
+    border: solid 2px black;
+    cursor :pointer;
+}
+.hidden_box label:hover {
+    background: #efefef;
+}
+/*チェックは見えなくする*/
+.hidden_box input {
+    display: none;
+}
+/*通常時、中身を非表示にしておく*/
+.hidden_box .hidden_show {
+    height: 0;
+    padding: 0;
+    overflow: hidden;
+    opacity: 0;
+    transition: 0.8s;
+}
+/*クリックで中身表示*/
+.hidden_box input:checked ~ .hidden_show {
+    padding: 0px 0;
+    height: auto;
+    opacity: 1;
+}
+input,textarea,select {
+  font-size: 16px;/*開閉メモの挙動に関わる(変なズームが起きない、その条件を満たしつつ文字サイズを少し小さくする。textareaサイズはやや大きめに)*/
+  transform: scale(0.9);
+}
+#menubar {
+  position: fixed;
+  font-size: 13px;
+  top: 1px;
+  right: 0px;
+  font-family: "HuiFont29";
+}
