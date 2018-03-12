@@ -1,0 +1,10 @@
+CACHE MANIFEST
+
+# version1.0.0
+
+CACHE:
+index.html
+jquery-1.11.2.min.js
+memobar.css
+memobar.js
+menubar.js
