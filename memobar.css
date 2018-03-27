@@ -36,7 +36,11 @@
 
 
 
-
+#readmarkerbar{
+  position: fixed;
+  bottom: 13px;
+  left: 90px;
+}
 
 /*全体　これもメモ機能関連。特に追加搭載した、開閉の機能。*/
 .hidden_box {

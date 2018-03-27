@@ -46001,8 +46001,35 @@ iPodから送信
       <br>　　<a href="#" onclick="memobarETCENDworklll(); return false;">[閉じる]</a><br>
     </div>
 </div>
-</body>
 
+<div class="hidden_box" id="readmarkerbar">
+    <label for="rmb">補助</label>
+    <input type="checkbox" id="rmb"/>
+    <div class="hidden_show">
+
+      <font size="5">
+        <br><br><br><br>
+        <a href="#" onClick="readmarkerPosSave(); return false;">しおりを挟む</a>
+        <div id="rmIntDgb">
+          <br>
+          [now]
+          <script type="text/javascript">
+            getwReadmarker();
+          </script>
+          <br>
+        </div>
+
+        <br><br>
+        <a href="#" onClick="readmarkerPosLoad(); return false;">ロード</a>
+        <br><br>
+      </font>
+
+    </div>
+</div>
+
+
+
+</body>
 <!--メニューバー、メモ以外の諸設定(別ファイルに分ける程でもない？試用中？)-->
 <style>
 @font-face {

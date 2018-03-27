@@ -65,7 +65,17 @@ function memobarETCENDworklll(){
 
 
 
-
+function readmarkerPosSave(){
+  localStorage.setItem('readmarker',$(window).scrollTop() );
+  getwReadmarker();
+}
+function readmarkerPosLoad(){
+  var value = localStorage.getItem('readmarker');
+  $(window).scrollTop(parseInt(value, 10) );
+}
+function getwReadmarker(){
+  $("#rmIntDgb").html("[   "+localStorage.getItem('readmarker')+"   ]");
+}
 
 function memosaveSystem(){
         if(localStorage.getItem('memo')){
